@@ -13,9 +13,9 @@ const Table = ({ data }) => {
           <th>Rank</th>
           <th>Name</th>
           <th>Price</th>
-          <th>Volume</th>
-          <th>Market Cap</th>
-          <th>24h</th>
+          <th className="hidden md:table-cell">Volume</th>
+          <th className="hidden md:table-cell">Market Cap</th>
+          <th className="hidden md:table-cell">24h</th>
         </tr>
       </thead>
       <tbody className="text-text">
@@ -34,9 +34,11 @@ const Table = ({ data }) => {
                 <span>{coin.name}</span>
               </td>
               <td>{coin.data.price}</td>
-              <td>{coin.data.total_volume}</td>
-              <td>{coin.data.market_cap}</td>
-              <td>{coin.data.price_change_percentage_24h.usd}</td>
+              <td className="hidden md:table-cell">{coin.data.total_volume}</td>
+              <td className="hidden md:table-cell">{coin.data.market_cap}</td>
+              <td className="hidden md:table-cell">
+                {coin.data.price_change_percentage_24h.usd}
+              </td>
             </tr>
           ))}
       </tbody>

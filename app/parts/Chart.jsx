@@ -2,7 +2,14 @@
 import { getData, get_coin_chart } from "@/endpoints";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { memo, useState } from "react";
-import { Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const Chart = memo(({ id }) => {
   const [day, setDay] = useState(7);
@@ -49,24 +56,28 @@ const Chart = memo(({ id }) => {
           30d
         </button>
       </p>
-      <LineChart
-        width={500}
-        height={250}
-        data={data.prices}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        {/* <CartesianGrid strokeDasharray="1 1" /> */}
-        <XAxis
-          name="my data"
-          dataKey={(entry) => {
-            return getTime(entry[0]);
-          }}
-        />
-        <YAxis dataKey={(entry) => entry[1]} />
-        <Tooltip />
-        {/* <Legend /> */}
-        <Line type="monotone" dataKey={(entry) => entry[1]} stroke="#8884d8" />
-      </LineChart>
+      <ResponsiveContainer width="100%" height={250}>
+        <LineChart
+          data={data.prices}
+          margin={{ top: 5, right: 0, left: 0, bottom: 5 }}
+        >
+          {/* <CartesianGrid strokeDasharray="1 1" /> */}
+          <XAxis
+            name="my data"
+            dataKey={(entry) => {
+              return getTime(entry[0]);
+            }}
+          />
+          <YAxis dataKey={(entry) => entry[1]} />
+          <Tooltip />
+          {/* <Legend /> */}
+          <Line
+            type="monotone"
+            dataKey={(entry) => entry[1]}
+            stroke="#8884d8"
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 });

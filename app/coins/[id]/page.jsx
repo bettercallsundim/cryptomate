@@ -33,7 +33,7 @@ const page = memo(({ params: { id } }) => {
     },
   } = data;
   return (
-    <div className="bg-background text-text min-h-screen min-w-full p-20 flex items-center justify-around">
+    <div className="bg-background text-text min-h-screen min-w-full p-8 flex flex-col md:flex-row md:items-center md:justify-around gap-8">
       <div>
         <Badge className="bg-accent" variant="outline">
           # {market_cap_rank}
@@ -47,31 +47,51 @@ const page = memo(({ params: { id } }) => {
           $ {usd}{" "}
           <span
             className={`${
-              price_change_percentage_24h.toFixed(2) < 0
+              price_change_percentage_24h?.toFixed(2) < 0
                 ? "text-red-600"
                 : "text-green-600"
             }`}
           >
             <span className="">
-              {price_change_percentage_24h.toFixed(2) < 0 ? (
+              {price_change_percentage_24h?.toFixed(2) < 0 ? (
                 <IoMdArrowDropdown className="inline-block text-red-600" />
               ) : (
                 <IoMdArrowDropup className="inline-block text-green-600" />
               )}
             </span>
             <span className="text-xl">
-              {price_change_percentage_24h.toFixed(2)} %
+              {price_change_percentage_24h?.toFixed(2)} %
             </span>
           </span>
         </p>
         <p className="mt-8 font-semibold">
-          <p className="text-gray-600 mb-2"> Market Cap : ${market_cap_usd}</p>
+          <p className="text-gray-600 mb-2 ">
+            {" "}
+            <span className="bg-gray-700 rounded-[15px] text-white px-2 mr-4">
+              Market Cap :
+            </span>{" "}
+            ${market_cap_usd}
+          </p>
           <p className="text-gray-600 mb-2">
             {" "}
-            24H Trading Volume : ${total_volume_usd}
+            <span className="bg-gray-700 rounded-[15px] text-white px-2 mr-4">
+              24H Trading Volume :
+            </span>
+            ${total_volume_usd}
           </p>
-          <p className="text-gray-600 mb-2"> Total Supply : ${total_supply}</p>
-          <p className="text-gray-600 mb-2"> Max Supply : ${max_supply}</p>
+          <p className="text-gray-600 mb-2">
+            {" "}
+            <span className="bg-gray-700 rounded-[15px] text-white px-2 mr-4">
+              Total Supply :
+            </span>
+            ${total_supply}
+          </p>
+          <p className="text-gray-600 mb-2">
+            <span className="bg-gray-700 rounded-[15px] text-white px-2 mr-4">
+              Max Supply :
+            </span>{" "}
+            ${max_supply}
+          </p>
         </p>
       </div>
       <div>

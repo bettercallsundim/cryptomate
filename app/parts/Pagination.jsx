@@ -12,10 +12,10 @@ function Pagination({ coinLength, limit, setPage }) {
       breakLabel="..."
       nextLabel=">"
       onPageChange={handlePageClick}
-      pageRangeDisplayed={5}
+      pageRangeDisplayed={2}
       pageCount={Math.ceil(coinLength / limit)}
       previousLabel="<"
-      className="flex justify-center gap-x-5 paginate"
+      className="flex justify-center gap-x-5 paginate mt-4"
       activeClassName="text-white"
     />
   );

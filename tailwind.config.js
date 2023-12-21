@@ -17,18 +17,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        text: "rgb(var(--text))",
-        background: "rgb(var(--background))",
-        primary: "rgb(var(--primary))",
-        secondary: "rgb(var(--secondary))",
-        accent: "rgb(var(--accent))",
+        text: "var(--text)",
+        background: "var(--background)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
       },
 
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

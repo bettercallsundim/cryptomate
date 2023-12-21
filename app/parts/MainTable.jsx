@@ -1,7 +1,8 @@
 "use client";
 
+import millify from "millify";
 import { useRouter } from "next/navigation";
-
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 const MainTable = ({ data }) => {
   console.log("data from table", data);
   const router = useRouter();
@@ -14,11 +15,11 @@ const MainTable = ({ data }) => {
           <th>Rank</th>
           <th>Name</th>
           <th>Price</th>
-          <th>Volume</th>
-          <th>Market Cap</th>
-          <th>Low 24h</th>
-          <th>High 24h</th>
-          <th>24h Price Change %</th>
+          <th className="hidden md:table-cell">Volume</th>
+          <th className="hidden md:table-cell">Market Cap</th>
+          <th className="hidden md:table-cell">Low 24h</th>
+          <th className="hidden md:table-cell">High 24h</th>
+          <th className="hidden md:table-cell">24h Price Change %</th>
         </tr>
       </thead>
       <tbody className="text-text">
@@ -56,12 +57,31 @@ const MainTable = ({ data }) => {
                   />
                   <span>{name}</span>
                 </td>
-                <td>{current_price}</td>
-                <td>{total_volume}</td>
-                <td>{market_cap}</td>
-                <td>{low_24h}</td>
-                <td>{high_24h}</td>
-                <td>{price_change_percentage_24h}</td>
+                <td>$ {current_price}</td>
+                <td className="hidden md:table-cell">
+                  $ {millify(total_volume)}
+                </td>
+                <td className="hidden md:table-cell">
+                  $ {millify(market_cap)}
+                </td>
+                <td className="hidden md:table-cell">$ {low_24h}</td>
+                <td className="hidden md:table-cell">$ {high_24h}</td>
+                <td className="hidden md:table-cell">
+                  <span
+                    className={`${
+                      price_change_percentage_24h?.toFixed(2) < 0
+                        ? "text-red-600"
+                        : "text-green-600"
+                    }`}
+                  >
+                    {price_change_percentage_24h?.toFixed(2)}{" "}
+                  </span>
+                  {price_change_percentage_24h?.toFixed(2) < 0 ? (
+                    <IoMdArrowDropdown className="inline-block text-red-600" />
+                  ) : (
+                    <IoMdArrowDropup className="inline-block text-green-600" />
+                  )}
+                </td>
               </tr>
             )
           )}

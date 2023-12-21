@@ -12,7 +12,7 @@ const Trending = () => {
   console.log(data);
 
   return (
-    <div className="p-20 bg-[#111111]">
+    <div className="p-8 bg-[#111111]">
       <Table data={data} />
     </div>
   );

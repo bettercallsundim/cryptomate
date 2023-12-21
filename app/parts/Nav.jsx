@@ -9,7 +9,7 @@ export default function NavigationMenuDemo() {
     setOpen(!open);
   }
   return (
-    <nav className="px-8 md:px-20  text-text border-gray-200 bg-primary">
+    <nav className="px-8 md:px-20  text-text  bg-accent">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
         <Link
           href="/"
@@ -23,7 +23,7 @@ export default function NavigationMenuDemo() {
           onClick={handleNav}
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden hover:bg-gray-700 focus:outline-none  "
           aria-controls="navbar-default"
           aria-expanded="false"
         >

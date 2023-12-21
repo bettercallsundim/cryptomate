@@ -3,18 +3,18 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --text: 5 15 7;
-    --background: 244 251 245;
-    --primary: 70 210 91;
-    --secondary: 127 230 143;
-    --accent: 101 231 120;
+    --text: #090613;
+    --background: #efebf9;
+    --primary: #311b79;
+    --secondary: #8365e6;
+    --accent: #3f15bc;
   }
   .dark {
-    --text: 240 250 242;
-    --background: 4 12 5;
-    --primary: 45 185 66;
-    --secondary: 25 128 41;
-    --accent: 24 154 44;
+    --text: #edeaf8;
+    --background: #0a0615;
+    --primary: #9d87e5;
+    --secondary: #371997;
+    --accent: #6a41ea;
   }
 }
 
