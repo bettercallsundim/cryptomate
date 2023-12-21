@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 export default function NavigationMenuDemo() {
@@ -8,13 +9,16 @@ export default function NavigationMenuDemo() {
     setOpen(!open);
   }
   return (
-    <nav className="px-8 md:px-20 gradient-bg text-white border-gray-200 ">
+    <nav className="px-8 md:px-20  text-text border-gray-200 bg-primary">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link
+          href="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+        >
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            crypto
+            🍪 cryptomate
           </span>
-        </a>
+        </Link>
         <button
           onClick={handleNav}
           data-collapse-toggle="navbar-default"
@@ -46,33 +50,33 @@ export default function NavigationMenuDemo() {
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  ">
             <li>
-              <a
-                href="#"
-                className="block hover:text-black py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  "
+              <Link
+                href="/"
+                className="block hover:text-black py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0  "
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 rounded hover:bg-gray-100 hover:text-black md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+              <Link
+                href="/coins"
+                className="block py-2 px-3 rounded hover:bg-gray-100 hover:text-black md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 "
               >
-                About
-              </a>
+                Coins
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-black block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+              <Link
+                href="/coins/trending"
+                className="hover:text-black block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 "
               >
-                Pricing
-              </a>
+                Trending
+              </Link>
             </li>
             <li>
               <a
                 href="#"
-                className="hover:text-black block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                className="hover:text-black block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 "
               >
                 Contact
               </a>

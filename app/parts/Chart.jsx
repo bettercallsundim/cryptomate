@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { getData, get_coin_chart } from "@/endpoints";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { memo, useState } from "react";
@@ -24,28 +23,31 @@ const Chart = memo(({ id }) => {
   if (!data) return <div>Loading...</div>;
   return (
     <div>
-      <p>
-        <Button
+      <p className="pl-40 mb-4">
+        <button
+          className="rounded-[15px] font-semibold hover:scale-[1.05] bg-primary px-4 py-1 mr-2"
           onClick={() => {
             setDay(7);
           }}
         >
           7d
-        </Button>
-        <Button
+        </button>
+        <button
+          className="rounded-[15px] font-semibold hover:scale-[1.05] bg-primary px-4 py-1 mr-2"
           onClick={() => {
             setDay(15);
           }}
         >
           15d
-        </Button>
-        <Button
+        </button>
+        <button
+          className="rounded-[15px] font-semibold hover:scale-[1.05] bg-primary px-4 py-1 mr-2"
           onClick={() => {
             setDay(30);
           }}
         >
           30d
-        </Button>
+        </button>
       </p>
       <LineChart
         width={500}

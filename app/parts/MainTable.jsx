@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-const Table = ({ data }) => {
+const MainTable = ({ data }) => {
   console.log("data from table", data);
   const router = useRouter();
   if (!data) return <div>Loading...</div>;
@@ -44,4 +44,4 @@ const Table = ({ data }) => {
   );
 };
 
-export default Table;
+export default MainTable;
