@@ -1,11 +1,13 @@
 "use client";
 import { getData, get_coin_list, get_coins_data } from "@/endpoints";
 import { useQuery } from "@tanstack/react-query";
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import MainTable from "../parts/MainTable";
+import Pagination from "../parts/Pagination";
 
 const page = memo(() => {
   const [page, setPage] = useState(1);
+  const [coinLength, setCoinLength] = useState(0);
   const [limit, setLimit] = useState(10);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["allCoinsWithData", limit, page],
@@ -17,10 +19,16 @@ const page = memo(() => {
     queryFn: () => getData(get_coin_list()),
     // refetchInterval: 5 * 1000,
   });
-  console.log(coinlist?.length);
+  useEffect(() => {
+    if (coinlist?.length) {
+      setCoinLength(coinlist?.length);
+    }
+  }, []);
+
   return (
-    <div>
+    <div className="bg-[#111111] p-10">
       <MainTable data={data} />
+      <Pagination setPage={setPage} coinLength={coinLength} limit={limit} />
     </div>
   );
 });
