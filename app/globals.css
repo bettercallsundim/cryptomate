@@ -52,7 +52,7 @@ thead {
   -webkit-backdrop-filter: blur(8px); /* For Safari */
 }
 .paginate li {
-  padding: 0.5rem 0.3rem;
-  background: rgb(1, 53, 53);
+  padding: 0.3rem 1rem;
+  background: rgb(242, 242, 242);
   border-radius: 15px;
 }

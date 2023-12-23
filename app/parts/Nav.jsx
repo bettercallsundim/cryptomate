@@ -1,10 +1,21 @@
 "use client";
 
+import { getDataFromLocal } from "@/lib/localStorage";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Login from "./Login";
 
 export default function NavigationMenuDemo() {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null); // [1
+  useEffect(() => {
+    const user = getDataFromLocal("user");
+    if (user?.email) {
+      setUser(user);
+    }
+    console.log(user, "navvv");
+  }, []);
+
   function handleNav() {
     setOpen(!open);
   }
@@ -48,7 +59,7 @@ export default function NavigationMenuDemo() {
           className={` w-full md:block md:w-auto ${!open && "hidden"}`}
           id="navbar-default"
         >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  ">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 items-center  ">
             <li>
               <Link
                 href="/"
@@ -81,6 +92,18 @@ export default function NavigationMenuDemo() {
                 Contact
               </a>
             </li>
+
+            {user?.email && (
+              <li>
+                <img
+                  className="w-[30px] h-[30px] rounded-full"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </li>
+            )}
+
+            <li>{<Login user={user} setUser={setUser} />}</li>
           </ul>
         </div>
       </div>
