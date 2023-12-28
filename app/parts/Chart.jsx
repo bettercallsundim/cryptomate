@@ -30,7 +30,7 @@ const Chart = memo(({ id }) => {
   if (!data) return <div>Loading...</div>;
   return (
     <div>
-      <p className="pl-40 mb-4">
+      <p className="pl-20 md:pl-40 mb-4">
         <button
           className="rounded-[15px] font-semibold hover:scale-[1.05] bg-primary px-4 py-1 mr-2"
           onClick={() => {

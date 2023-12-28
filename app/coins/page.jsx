@@ -26,7 +26,7 @@ const page = memo(() => {
   }, []);
 
   return (
-    <div className="bg-[#111111] p-10">
+    <div className="bg-[#111111] text-sm md:text-base px-2 py-4 md:p-10">
       <MainTable data={data} />
       <Pagination setPage={setPage} coinLength={coinLength} limit={limit} />
     </div>

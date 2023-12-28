@@ -33,7 +33,7 @@ const page = memo(({ params: { id } }) => {
     },
   } = data;
   return (
-    <div className="bg-background text-text min-h-screen min-w-full p-8 flex flex-col md:flex-row md:items-center md:justify-around gap-8">
+    <div className="bg-background text-text min-h-screen min-w-full text-sm md:text-base px-2 py-4 md:p-10 flex flex-col md:flex-row md:items-center md:justify-around gap-8">
       <div>
         <Badge className="bg-accent" variant="outline">
           # {market_cap_rank}

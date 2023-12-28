@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -44,15 +46,4 @@ td {
 }
 thead {
   text-align: left;
-}
-.blurred- {
-  background-image: url("https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D"); /* Replace 'your-background-image.jpg' with your image path */
-  background-size: cover;
-  backdrop-filter: blur(8px); /* Adjust the blur intensity as needed */
-  -webkit-backdrop-filter: blur(8px); /* For Safari */
-}
-.paginate li {
-  padding: 0.3rem 1rem;
-  background: rgb(242, 242, 242);
-  border-radius: 15px;
 }
