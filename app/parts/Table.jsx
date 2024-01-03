@@ -10,7 +10,9 @@ import { db } from "./firebase.config";
 const Table = ({ data }) => {
   const [saved, setSaved] = useState([]);
   useEffect(() => {
-    getSaved();
+    const email = getDataFromLocal("user").email;
+
+    if (email) getSaved();
   }, []);
 
   const router = useRouter();
@@ -81,7 +83,7 @@ const Table = ({ data }) => {
                   }}
                 >
                   {saved.includes(coin.id) ? (
-                     <MdFavorite />
+                    <MdFavorite />
                   ) : (
                     <MdFavoriteBorder />
                   )}

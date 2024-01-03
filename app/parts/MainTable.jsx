@@ -13,7 +13,9 @@ const MainTable = ({ data }) => {
   const router = useRouter();
   const [saved, setSaved] = useState([]);
   useEffect(() => {
-    getSaved();
+    const email = getDataFromLocal("user").email;
+
+    if (email) getSaved();
   }, []);
 
   const addSave = async (coinID) => {
