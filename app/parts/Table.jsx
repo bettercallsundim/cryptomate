@@ -1,15 +1,58 @@
 "use client";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
+import { getDataFromLocal } from "@/lib/localStorage";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { db } from "./firebase.config";
 
 const Table = ({ data }) => {
-  console.log("data from table", data);
+  const [saved, setSaved] = useState([]);
+  useEffect(() => {
+    getSaved();
+  }, []);
+
   const router = useRouter();
+  const addSave = async (coinID) => {
+    const email = getDataFromLocal("user").email;
+    let initCoins = await getSaved();
+    try {
+      if (initCoins.includes(coinID)) {
+        const docRef = await setDoc(doc(db, email, "data"), {
+          savedCoins: initCoins.filter((coin) => coin !== coinID),
+        });
+      } else {
+        const docRef = await setDoc(doc(db, email, "data"), {
+          savedCoins: [...initCoins, coinID],
+        });
+      }
+      getSaved();
+    } catch (err) {
+      console.error("Error adding document: ", err);
+    }
+  };
+  const getSaved = async () => {
+    const email = getDataFromLocal("user").email;
+
+    const docRef = doc(db, email, "data");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setSaved(docSnap.data().savedCoins);
+      return docSnap.data().savedCoins;
+    } else {
+      return [];
+    }
+  };
+
   if (!data) return <div>Loading...</div>;
+
   return (
     <table className=" text-primary w-full blurred-table">
       <thead>
         <tr>
+          <th>Saved</th>
           <th>Rank</th>
           <th>Name</th>
           <th>Price</th>
@@ -28,6 +71,22 @@ const Table = ({ data }) => {
               className="hover:bg-gray-800 cursor-pointer"
               key={ind}
             >
+              <td>
+                {" "}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addSave(coin.id);
+                    getSaved();
+                  }}
+                >
+                  {saved.includes(coin.id) ? (
+                     <MdFavorite />
+                  ) : (
+                    <MdFavoriteBorder />
+                  )}
+                </button>
+              </td>
               <td>{coin.score + 1}</td>
               <td className="flex items-center gap-x-2">
                 <img className="rounded-full" src={coin.thumb} alt="" />

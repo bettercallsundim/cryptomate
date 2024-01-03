@@ -7,7 +7,7 @@ import Login from "./Login";
 
 export default function NavigationMenuDemo() {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState(null); // [1
+  const [user, setUser] = useState(null);
   useEffect(() => {
     const user = getDataFromLocal("user");
     if (user?.email) {
@@ -20,7 +20,7 @@ export default function NavigationMenuDemo() {
     setOpen(!open);
   }
   return (
-    <nav className="px-8 md:px-20  text-text  bg-accent">
+    <nav className="px-8 md:px-20  text-text  bg-gray-900 shadow-lg shadow-gray-100">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
         <Link
           href="/"
@@ -84,14 +84,14 @@ export default function NavigationMenuDemo() {
                 Trending
               </Link>
             </li>
-            <li>
-              <a
-                href="#"
+            {/* <li>
+              <Link
+                href="/saved"
                 className="hover:text-black block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 "
               >
-                Contact
-              </a>
-            </li>
+                Saved
+              </Link>
+            </li> */}
 
             {user?.email && (
               <li>
